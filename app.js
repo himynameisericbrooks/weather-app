@@ -1,4 +1,5 @@
 const request = require('request')
+const geocode = require('./utils/geocode')
 
 // const url = 'http://api.weatherstack.com/current?access_key=56bbc6f76fa91121aae7a4a8ab3b0466&query=37.8267,-122.4233&units=f'
 
@@ -26,16 +27,7 @@ const request = require('request')
 //     }
 // })
 
-const geocode = (address, callback) => {
- const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(address) + '.json?access_token=pk.eyJ1IjoiaGlteW5hbWVpc2VyaWNicm9va3MiLCJhIjoiY2tld2JqemZzMm8yMDJzcG5uZWRrNTVnNyJ9.wl7UoQXjVU8fqI3yltejww&limit=1'
-
-    request({ url: url, json: true }, (error, response) => {
-        if (error) {
-            callback('Unable to connect to location services!')
-        }
-    })
-}
-
-geocode('New York', (error, callback) => {
-
+geocode('Boston', (error, data) => {
+    console.log('Error', error)
+    console.log('Data', data)
 })
